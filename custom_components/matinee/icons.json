@@ -1,0 +1,19 @@
+{
+  "entity": {
+    "sensor": {
+      "watching": { "default": "mdi:television-play" },
+      "library": { "default": "mdi:filmstrip-box-multiple" },
+      "latest": { "default": "mdi:new-box" }
+    },
+    "button": {
+      "scan": { "default": "mdi:folder-refresh" }
+    },
+    "event": {
+      "activity": { "default": "mdi:movie-open-play" }
+    }
+  },
+  "services": {
+    "sleep_timer": { "service": "mdi:power-sleep" },
+    "set_subtitles": { "service": "mdi:subtitles" }
+  }
+}

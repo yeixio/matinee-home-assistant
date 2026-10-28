@@ -1,0 +1,108 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "Connect to Matinee",
+        "description": "Home Assistant looks for Matinee on your home network by itself. If it didn't find yours, type the address you open Matinee at.",
+        "data": {
+          "url": "Address"
+        },
+        "data_description": {
+          "url": "Such as http://192.168.1.20:7171 or https://matinee.example.com"
+        }
+      },
+      "confirm": {
+        "title": "Matinee found",
+        "description": "Connect Home Assistant to {name} at {url}? Next you'll approve it with a code, like the Matinee apps."
+      },
+      "reauth_confirm": {
+        "title": "Sign in to Matinee again",
+        "description": "Home Assistant was signed out of Matinee at {url}. Sign it in again with a code."
+      },
+      "expired": {
+        "title": "The code expired",
+        "description": "Nobody approved the code in time. Get a new one?"
+      }
+    },
+    "progress": {
+      "approve": "On a phone or computer signed in to Matinee as an admin, open [{url}]({link}) and enter the code **{code}**. Home Assistant carries on by itself once you approve it."
+    },
+    "abort": {
+      "already_configured": "This Matinee server is already set up.",
+      "already_in_progress": "This Matinee server is already being set up.",
+      "cannot_connect": "Couldn't reach Matinee. Check the address, and that Home Assistant and Matinee are on the same network.",
+      "declined": "Someone declined the sign-in on the Matinee server.",
+      "not_admin": "That account isn't a Matinee admin. Approve the code while signed in as an admin, so Home Assistant can see and control every player.",
+      "not_matinee": "That isn't a Matinee server.",
+      "reauth_successful": "Signed in again.",
+      "too_old": "This Matinee server is too old for Home Assistant. Update Matinee, then try again."
+    },
+    "error": {
+      "cannot_connect": "Couldn't reach Matinee at that address.",
+      "too_old": "This Matinee server is too old for Home Assistant. Update Matinee, then try again."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "watching": {
+        "name": "Watching now",
+        "unit_of_measurement": "players"
+      },
+      "library": {
+        "name": "{name}"
+      },
+      "latest": {
+        "name": "Latest addition"
+      }
+    },
+    "button": {
+      "scan": {
+        "name": "Scan libraries"
+      }
+    },
+    "event": {
+      "activity": {
+        "name": "Activity",
+        "state_attributes": {
+          "event_type": {
+            "state": {
+              "playback_started": "Started playing",
+              "playback_paused": "Paused",
+              "playback_resumed": "Resumed",
+              "playback_stopped": "Stopped",
+              "item_added": "Something new was added",
+              "library_scanned": "A library finished scanning"
+            }
+          }
+        }
+      }
+    }
+  },
+  "services": {
+    "sleep_timer": {
+      "name": "Sleep timer",
+      "description": "Stops playback after a while, or at the end of what's playing. 0 minutes turns the timer off.",
+      "fields": {
+        "minutes": {
+          "name": "Minutes",
+          "description": "Pause after this many minutes; 0 turns the timer off."
+        },
+        "end_of_item": {
+          "name": "At the end",
+          "description": "Stop when the episode or movie ends instead."
+        }
+      }
+    },
+    "set_subtitles": {
+      "name": "Set subtitles",
+      "description": "Shows a subtitle track, or none.",
+      "fields": {
+        "track": {
+          "name": "Track",
+          "description": "The track's id, as in the player's subtitles attribute; empty for none."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+sleep_timer:
+  target:
+    entity:
+      integration: matinee
+      domain: media_player
+  fields:
+    minutes:
+      example: 30
+      selector:
+        number:
+          min: 0
+          max: 1440
+          unit_of_measurement: min
+    end_of_item:
+      example: false
+      selector:
+        boolean:
+set_subtitles:
+  target:
+    entity:
+      integration: matinee
+      domain: media_player
+  fields:
+    track:
+      required: true
+      example: "0"
+      selector:
+        text:

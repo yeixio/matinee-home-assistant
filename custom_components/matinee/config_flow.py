@@ -115,6 +115,10 @@ class MatineeConfigFlow(ConfigFlow, domain=DOMAIN):
             step_id="user",
             data_schema=vol.Schema({vol.Required(CONF_URL, default=self._url or "http://"): str}),
             errors=errors,
+            description_placeholders={
+                "example_home": "http://192.168.1.20:7171",
+                "example_remote": "https://matinee.example.com",
+            },
         )
 
     async def async_step_link(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:

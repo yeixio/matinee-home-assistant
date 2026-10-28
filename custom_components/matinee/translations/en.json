@@ -9,7 +9,7 @@
           "url": "Address"
         },
         "data_description": {
-          "url": "Such as http://192.168.1.20:7171 or https://matinee.example.com"
+          "url": "Such as {example_home} or {example_remote}"
         }
       },
       "confirm": {

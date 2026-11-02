@@ -27,6 +27,12 @@ python -m venv .venv && .venv/bin/pip install -r requirements-test.txt
 
 The tests run Home Assistant against a pretend Matinee server (`tests/conftest.py`). The server's API is documented in `internal/api/openapi.yaml` in [yeixio/matinee](https://github.com/yeixio/matinee), and how players take commands in its `docs/remote-control.md`.
 
+## Support Matinee
+
+Matinee for Home Assistant is free and open source. If it's useful to you, you can [donate to Matinee](https://yeix.io/matinee/donate), once or monthly, by card. Donations pay for its development. Nothing is held back for donors.
+
+[![Donate to Matinee](https://img.shields.io/badge/Donate-Support_Matinee-ff6a55?style=for-the-badge&logo=stripe&logoColor=white)](https://yeix.io/matinee/donate)
+
 ## License
 
 Apache License 2.0, the same as Home Assistant, so the integration can move into Home Assistant itself one day.

@@ -108,15 +108,28 @@ class MatineeHub:
         backoff = 1
         while True:
             try:
-                async for kind, event in self.api.events():
+                feed = self.api.events().__aiter__()
+                while True:
                     backoff = 1
                     self._set_connected(True)
-                    self._handle(kind, event)
+                    try:
+                        kind, event = await anext(feed)
+                        self._handle(kind, event)
+                    except StopAsyncIteration:
+                        break
+                    except (MatineeAuthError, MatineeError):
+                        raise
+                    except Exception:
+                        # A malformed event must not end the feed: log it and
+                        # keep reading the events that follow.
+                        _LOGGER.warning("Skipping bad Matinee event", exc_info=True)
             except MatineeAuthError:
                 self._set_connected(False)
                 self.entry.async_start_reauth(self.hass)
                 return
-            except MatineeError as err:
+            except Exception as err:
+                # Any other failure is a dropped feed: disconnect, back off and
+                # reconnect instead of leaving stale state behind.
                 _LOGGER.debug("Matinee feed dropped: %s", err)
             self._set_connected(False)
             await asyncio.sleep(backoff)
